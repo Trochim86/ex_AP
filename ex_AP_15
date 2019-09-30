@@ -1,0 +1,18 @@
+def collatzSequence(number):
+
+
+    if (number % 2 == 0): # if it's even
+        number = number // 2
+    else:                 # if it's odd
+        number = number * 3 + 1
+    print (number)
+    return (number) # zwracanie wartosci do dalszej analizy 
+   
+try:  # miejsce lokakownia wyjatku przed zdarzeniem
+    number = int(input('Podaj numer: ')) # po try: wciecie woersza
+
+    while (number != 1): # po try: wciecie woersza
+        number = collatzSequence(number) # po try: wciecie woersza
+
+except ValueError: # nie zapominac o ':'
+    print(' cyferki proszę !!')
