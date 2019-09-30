@@ -1,0 +1,11 @@
+cName = [] # twrzymy pustą liste
+while True: # loop
+    print('Podaj imie ' + str(len(cName) + 1) + # zlicza ile juz ma pozycji w liscie
+        ' (Ewentualnie nic niewpisuj, aby zakonczyc.):')
+    name = input() # wprowaszadz dane
+    if name == '': # procedyra przerwania pentli
+        break
+    cName = cName + [name] # konkatenacja listy , czyli łaczenie wyrazen , czyli nowa wartosc w liscie
+print('Oto imiona k :') # info
+for name in cName:
+    print(' ' + name) # drukuje zawarosc listy z wcieciem 
