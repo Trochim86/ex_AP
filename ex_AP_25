@@ -1,0 +1,15 @@
+AG = {'Alicaj': {'apple': 5, 'pretzels': 12},
+      'Bob': {'ham': 3, 'apple': 6},
+      'Karol': {'cups': 3, 'apple': 1}}
+
+def totalb(guest, item):
+    numb = 0 # Zmienan bedzie sumowala wartosci wystepujace w slownieku
+    for k, v in guest.items(): # dwei wartosci gosc i ilosc
+        numb = numb + v.get(item, 0)
+    return numb
+
+print('Liczab przyniesiionych roduktów')
+print(' - Jablka            ' + str(totalb(AG, 'apple')))
+print(' - Precle           ' + str(totalb(AG, 'pretzels')))
+print(' - Szynka           ' + str(totalb(AG, 'ham')))
+print(' - Kubki           ' + str(totalb(AG, 'cups')))
