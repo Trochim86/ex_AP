@@ -1,0 +1,19 @@
+dday = {'Alicja': '1 kwietnia', 'Bob': '3 pazdziernik', 'Karol': '12 czerwiec'}
+
+while True:
+    print('Podaj imie: (pozostwa puste by zakoniczyc program)')
+    name = input() # otwarta funkcja
+    if name =='': # dwykropek oraz dwa znaki rownosci
+        break # przerywa program
+
+    if name in dday:
+        print(dday[name] + 'to dzien urodzin o imieniu' + name + '.')
+
+    else:
+        print('Ne ma takiej osoby w bazie o imieniu ' + name + '.')
+
+        print('Kiedy przypadaja jej urodziny?')
+        bday = input()
+        dday[name] = bday
+        print('Baza została zaktualizowana')
+        print("Baza ma teraz jednostek" + str(len(dday)))
