@@ -1,0 +1,26 @@
+# kolko i krzyzyk gierca (projrkt do rozwiniecia !)
+
+theBord = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
+           'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
+           'low-L': ' ', 'low-M': ' ', 'low-R': ' '} # tworzymy slownik
+# tworzymy definicje dodajemy grafike miedzy klucze w slowniku
+def printboard(board):
+    print(board['top-L'] + '|' + board['top-M'] + '|' + board['top-R'])
+    print('-+-+-') # druk grafiki miedzy wierszami
+    print(board['mid-L'] + '|' + board['mid-M'] + '|' + board['mid-R'])
+    print('-+-+-') # druk grafiki miedzy wierszami
+    print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
+    print('-+-+-') # druk grafiki miedzy wierszami
+
+turn = 'X'
+for i in range(9):
+    printboard(theBord)
+    print('Ruch gracz' + turn + '.W którym polu stawiasz znak?')
+    move = input() # wprowadzasz ruch
+    theBord[move] = turn # aktualizacja bazy o nowy ruch
+    if turn == 'X':
+        turn = '0'
+    else:
+        turn = 'X'
+
+printboard(theBord) 
