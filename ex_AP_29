@@ -1,0 +1,15 @@
+#! Python3
+# ex_AP_29 - kopjuje i dodaje znaczek gwiazdki do tekstu w schowku
+
+import pyperclip
+text = pyperclip.paste()
+
+#Rozdzielenie tekstu 
+lines = text.split('\n') # dzielenie tekstu na akapity
+for i in range(len(lines)): # podział dla wszystkich indeksów listy 'lines'
+    lines[i] = '*' + lines[i] # dodawanie gwaizdki do kazdego ciagu txt
+
+text = '\n'.join(lines)
+
+pyperclip.copy('przykladowy text ')
+print(text)
