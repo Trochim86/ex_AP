@@ -1,0 +1,52 @@
+#! python3
+# wyszukuje adresy email i telefon . Otwierasz strone www kopiujesz do schowka zawartosci i uruchamiasz program
+
+import pyperclip, re
+
+Phone = re.compile(r'''(
+    (\d{2}|\d{2}\))?                    #numer kierunkowy
+    (\s|-|\))?  
+    (\d{2}|\d{2}\))?
+    (\s|-|\))?                      #Separator
+    (\d{3})                             #Pierwsze trzy cyfry
+    #(\s|-|\.)  
+    (\s|-|\))?                          #Separator
+    #(\d{4}) 
+    (\d{2}|\d{2}\))                      # ostatnie czterty cyfry
+    (\s*(ext|x|ext.)\s*(\d{2,8}))?      #Numer wewnetrzny
+    )''', re.VERBOSE)
+
+
+    # TODO: utworzenie wyraen regularnego dopasowujacego adres email.
+
+Email = re.compile(r'''(
+    [a-zA-Z0-9._%+-]+                   #Nazwa użytkownia
+    @                                    #Zmak "@"
+    [a-zA-Z0-9.-]+                       #Nazwa domeny          
+    (\.[a-zA-Z]{2,4})                      
+    )''', re.VERBOSE)                   # Kropka i co kolwiek dalej...
+
+
+    #TODO: wyszukanie dopasowan w schowku
+
+text = str(pyperclip.paste())
+matches =[]                         # tworzy pusta liste w ktorej beda przechowywane wyszukania
+for group in Phone.findall(text):
+    PhoneN = '-'.join([group[1], group[3], group[5]])    #Ciag tekstowy utwrzony na podstawie grupy 1,3,5,8 . wymienione grupy dostosowuja wymieniony ciag tekstowy
+    if group[8] != '':
+        PhoneN += ' x' + group[8]
+    matches.append(PhoneN)
+for group in Email.findall(text):
+    matches.append(group[0])           # w przypadku znalezienie , dolaczamy grupe "0"
+
+
+    #TODO: skopiowanie wynikow do schowka
+
+if len(matches) >0:
+    pyperclip.copy('\n'.join(matches))
+    print('Skopiowano do schowka')
+    print('\n'.join(matches))
+
+else:
+    print('Brak wynikow wyszukiwania')
+
