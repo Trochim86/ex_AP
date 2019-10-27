@@ -1,0 +1,18 @@
+#!Python3
+# kod sprawdza czy haslo jest mocne 
+import re
+
+test = re.compile(r'.*[A-Z].*[a-z].*\d.*') # wyrazenie regularne
+
+
+
+def checkPassword(text): # defnicja sprawdzajaca wyrazy
+    if test.search(text) : # funkcja sprawdza zawartosc 'test
+        return True     # warunek jezeli prawda
+    else:
+        return False  # w przeciwnym razie 
+
+pw = input(str('Podaj haslo: '))  # wprowadzasz haslo 
+
+print(checkPassword(pw))  # drukuje podane haslo
+print('Haslo jest mocne') # info
