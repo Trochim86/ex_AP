@@ -1,0 +1,28 @@
+#otwieranie plikow txt
+import os
+
+with open('bacon.txt', 'r') as f:
+    size_to_read = 21
+    rfile = f.read(size_to_read) #modul czyta zawartosc pliku ( ilosc znakow do odczytania)
+print(rfile)
+
+
+#drukuje pierwsza linie tekstu
+# with open('bacon.txt', 'r') as f:
+#     for line in f:
+#         print(line, end='')
+
+    # rfile = f.readline()
+    # print(rfile, end='')
+
+    # #drukuje druga linie tekstu
+
+    # rfile = f.readline()
+    # print(rfile, end='')
+    
+#zapisywanie pliku
+with open('bacon.txt', 'r') as f:
+    with open('bacon2.txt', 'w') as ff:
+        for line in f:
+            ff.write(line)
+            pass
