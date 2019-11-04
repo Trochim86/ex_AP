@@ -1,0 +1,56 @@
+#!Python3
+#tworzy pytania i odpowiedzi w losowej kolejnosci
+
+import random
+
+#baza danych slowniki
+capitols = {'Pytanie': '01', 'Pyatnie1': '02','Pytanie03': '03', 'Pyatnie04': '04', 'Pytanie05': '05', 
+'Pytanie06': '06','Pyatnie07': '07', 'Pytanie08': '08', 'Pytanie09': '09' }
+
+for quizeNum in range(9):
+
+# utworzenie pliku Quizu i odpowiedzi
+    print(quizeNum)
+    quizeFile = open('Pytanie_test%s.txt' % (quizeNum + 1), 'w') # funkcja tworzy pliki pytan
+    answerKeyfile= open('Odpowiedzi_test%s.txt' % (quizeNum +1), 'w') # funkcja tworzy pliki odpowiedzi
+    # print(quizeFile)
+    # print(OdpKeyfile)
+# Zapis nagłówka quizu
+    quizeFile.write('Imie i nazwisko:\n\nData:\n\nKlasa:\n\n') # wpisuje do pliku szablon txt
+    quizeFile.write((' '* 20)+ 'Testowy Quize (quizeNum %s)' % (quizeNum +1)) # drukuje nagluwek w pliku txt
+    quizeFile.write('\n\n') # odstepy
+    
+#Losowe ustalenie kolejnosci pytan
+
+    states = list(capitols.keys()) # Tworzy liste z kluczy z warosciami
+    random.shuffle(states) # sortuje w/w liste
+    print(states)
+    for questionNum in range(9): # zakres pytań (zawsze dodawac in)
+
+        correctA = capitols[states[questionNum]] # Prawidlowe odpowiedzi
+        print(correctA, 'nowe')
+        wrongA = list(capitols.values()) # Powielamy wartosci w slowniku
+        print(wrongA, 'nowe2')
+        del wrongA[wrongA.index(correctA)] # usuwamy prawidlowa odpowiedz
+        print(wrongA)
+        wrongA = random.sample(wrongA, 3) # losowo wybieramy trzy warosci z listy
+        print(wrongA)
+        answerO = wrongA + [correctA] # Laczymy wszystkie odpowiedzi poprawnen i bledne
+        print(answerO)
+        random.shuffle(answerO) # ukladamy pytania losowo
+        print(answerO)
+
+# zapisywanie pytania i odpowiedzi w pliku Quizu
+        quizeFile.write('%s. Co jest pytaniem ?? %s?\n' % (questionNum +1, states[questionNum]))
+    #print(quizeFile)
+
+        for i in range (4): # zapisuje odpowiedzi
+            quizeFile.write('   %s. %s\n' % ('ABCD'[i], answerO[i]))
+        quizeFile.write('\n')
+
+# zapisz odpowiedzi w pliku
+        answerKeyfile.write('%s. %s\n' % (questionNum +1, 'ABCD'[answerO.index(correctA)]))
+    quizeFile.close()
+    answerKeyfile.close()
+
+    # Pamietać o wcięciach !!
