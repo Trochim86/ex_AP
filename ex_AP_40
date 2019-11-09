@@ -1,0 +1,18 @@
+import re # importuje obiekty wyrazen regularnych
+#filename = input('Input the Filename: ')
+
+with open('ex_AP_40.txt') as file: # tworzymy plik
+    content = file.read() # otwieramy plik do odczytu
+file.close()
+
+regex = re.compile(r'ADJECTIVE|NOUN|VERB|ADVERB') # wybor ruznych opcji
+#regex = re.compile('[A-Z]{3,}')
+matches = regex.findall(content) 
+print(matches)
+#newWord = []
+
+for word in matches: # dla każdego slowa w zmiennej matches user wstawia nowe
+    user_input = input('Enter %s: ' % word)
+  # newWord.append(user_input)
+    new_content = content.replace(word,user_input,1) # zmiana warosci w pliku
+print(new_content)
