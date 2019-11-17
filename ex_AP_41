@@ -1,0 +1,27 @@
+import zipfile, os
+
+ex = zipfile.ZipFile('test1.zip')
+>>> ex.namelist()
+['test1.txt']
+>>> spaminfo = ex.getinfo('test1.txt')
+>>> spaminfo.file_size
+0
+>>> spaminfo.compress_size
+0
+ex.close()
+
+x = zipfile.ZipFile('test1.zip')
+>>> ex.ectractall()
+
+ex = zipfile.ZipFile('test1.zip')
+>>> ex.extractall()
+>>> ex.extract('test1.txt', 'D:\\test2\\nowe\\foldery')
+'D:\\test2\\nowe\\foldery\\test1.txt'
+>>> ex.close()
+>>> ex.close()
+>>> en =zipfile.Zipfile('new.zip', 'w')
+
+en = zipfile.ZipFile('new.zip', 'w')
+>>> en.write('test1.txt', compress_type = zipfile.ZIP_DEFLATED)
+>>> en.close()
+
