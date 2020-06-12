@@ -1,0 +1,124 @@
+#Dziedziczenie klasy
+
+print("--" *20)
+
+class Parent(object): # klasa bazowa, jej funkcej będą dziedziczyły pozostałe klasy
+
+    def implicit(self): # funkcja w klasie
+        print("RODZIC implicit()")
+
+class Child(Parent):
+    pass
+
+dad = Parent()
+son = Child()
+
+dad.implicit()
+son.implicit()
+
+# dziedziczenie 2
+
+print("--" *20)
+
+class Parent(object): # klasa bazowa, jej funkcej będą dziedziczyły pozostałe klasy
+
+    def o1(self): # funkcja w klasie
+        print("RODZIC implicit()")
+
+class Child(Parent):# w tym przykładzie klasa otrzymuje nową funkcje (inna wartoś)
+
+    def o1(self):
+        print("Dzidzia, nowa wartość()")
+    pass
+
+dad = Parent()
+son = Child()
+
+dad.o1()
+son.o1()
+
+# dziedziczenie 3
+print("--" *20)
+
+class Parent(object): # klasa bazowa, jej funkcej będą dziedziczyły pozostałe klasy
+
+    def A1(self): # funkcja w klasie
+        print("RODZIC implicit()")
+
+class Child(Parent):# w tym przykładzie klasa otrzymuje nową funkcje (inna wartoś)
+
+    def A1(self):
+        print("Dzidzia przed, nowa wartość()")
+        super(Child, self).A1() # funkcja pobiera wersje parent.A1
+        print("dziecko po A1 rodzica() rodzica")
+    pass
+
+dad = Parent()
+son = Child()
+
+dad.A1()
+son.A1()
+
+print("--" *20)
+
+while True: # while z małej litery
+    line = input("===>")
+    if line[0] == '00':
+        continue
+    if line == "DONE":
+        break
+
+    print(line)
+print('Koniec')
+
+print("--" *20)
+
+S1 = None
+print('Start', S1)
+for New in [9, 20, 2, 45, 1]: # deukropek po nawiasie
+    if S1 is None:
+        S1 = New
+    elif New < S1:
+        S1 = New
+    print(S1, New)
+print('End', S1)
+
+print("--" *20)
+
+#Looping through string
+
+F1 = 'BANANA' # wyrazenie
+ID = 0 # numer litery
+while ID < len(F1) : # pentla jeżeli mniejsze niź ID to pracuje, potem stop
+    LI = F1[ID] # przypisani numeru do litery z F1
+    print(ID, LI) # druk litery i numeru
+    ID = ID + 1 # dodawnie kolejnej litery
+
+print("--" *20)
+
+FR = 'BANANA'
+for Letter in FR :
+    print(Letter)
+
+print("--" *20)
+
+#Looping and counting
+
+w01 = 'AAKONSTYTUCJA'
+Count = 0
+for Letter in w01:
+     if Letter == 'A':
+        Count = Count +1
+print(Count, "Tyle liter A ,znajduje sie w słowie konstytucja")
+
+print("--" *20)
+
+word = input('Eneter:')
+if word == 'Banana.':
+    print('All right, Bananas kutas')
+if word < 'Bananas':
+    print('Your wird,' + word +',comes before Banana ')
+elif word > 'Banana':
+    print('Your word,' + word +',comes after Banana')
+else:
+    print('All right, Banana')
