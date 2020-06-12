@@ -1,0 +1,22 @@
+# contains helpful premade actions we'll be using later.
+# Anything that starts with os. came from this
+import os
+
+# gets a list of all the items in the current directory
+file_names = os.listdir(".")  
+
+# we'll loop over every file in the current directory
+for file_name in file_names:
+    # define the prefix we're looking to remove
+    prefix = "sony_"
+
+    # if this current file has the prefix we don't want
+    if prefix in file_name:
+        # create the new file name without the prefix
+        new_file_name = file_name[len(prefix):]
+
+        # print out for improved readability
+        print(f"renaming {file_name} to {new_file_name}")
+
+        # perform the actual renaming of the file
+        os.rename(file_name, new_file_name)
