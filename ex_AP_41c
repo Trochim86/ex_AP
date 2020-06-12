@@ -1,0 +1,22 @@
+import os
+# wprowadzic lokalizacje pliku
+
+os.chdir('D:/Dane/Nauka/Python/N_01')
+#print(os.getcwd())
+for f in os.listdir():
+    #TODO split all file name
+    FileName, FileExt = os.path.splitext(f) 
+
+    
+    #TODO isolate of first part at file name
+    
+    FileName1 = FileName[:2]
+    
+    #print(FileName)
+    FileDis = "N01"
+    FileDis2 = FileName[2:]
+
+    NewName = '{}_{}_{}{}'.format(FileName1, FileDis, FileDis2, FileExt)
+    #TODO uwaga!! usunac znak '#' po sprawdzeniu nlokalizacji plikow 
+
+    #os.rename(f, NewName)
