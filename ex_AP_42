@@ -1,0 +1,40 @@
+#! python3
+#BackToZip.py - katalog wraz z cala zawartoscia zostaje umieszczony w katalogu zip,
+# ktorego nazwa jest inkremwntowana za kazdym razem.
+
+import os, zipfile
+
+# umieszczenie w archiwum calej zawrtosci katalogu
+def backupToZip(folder):
+    folder = os.path.abspath(folder) # dodajemy bezwzgledna sciezke do folderu
+
+# ustawiamy nazwy plikow jaka powinna zostac uzyta, przez kod na podstawie istniejacych plikow
+    number = 1
+    while True:
+        zipfilename = os.path.basename(folder) + '_' + str(number) + '.zip'
+        if not os.path.exists(zipfilename): # sparwdza czy w danej lokalizacij folder istniej
+            break
+    number = number + 1
+
+# Utworzenie archiwum
+    print ('Creating archives %s...' % (zipfilename))
+    backupZip = zipfile.ZipFile(zipfilename, 'w')
+
+#TODO przejsc przejsc przez cale drzewo katalogow i konpresjak plikow w podkatalogach
+
+
+    for foldername, subfolders, filenames in os.walk(folder):
+        print('Adding file %s...' % (foldername)) # dodawanie bierzacego katalgu do archiwum ZIP
+        backupZip.write(foldername) # Dodanie wszystkich plikow znajdujacych sie w katalogu do archiwum
+
+        for filename in filenames:
+            newBase = os.path.basename(folder) + '_' 
+            if filename.startswith(newBase) and filename.endswith('.zip.'):
+                continue
+
+            backupZip.write(os.path.join(foldername, filename))
+        backupZip.close()
+        print('** DONE !**')
+
+
+backupToZip('D:\\Dane\\Nauka\\Python\\N_01') # wprowadzamy tutaj aders katalogu do archiwizacji [\\] lub r()
